@@ -1,0 +1,47 @@
+# Project
+Debug
+doxygen
+docs
+
+# OS-X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Xcode
+*.xcworkspace
+xcuserdata
+
+# Atmel Studio
+*.atsln
+*.atsuo
+*.cproj
+
+# C
+
+# Object files
+*.o
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
