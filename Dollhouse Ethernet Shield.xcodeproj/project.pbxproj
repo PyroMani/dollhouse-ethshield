@@ -38,6 +38,8 @@
 		C0EE306B189AB482003D998E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		C0EE306C189AF2B1003D998E /* tlc59116.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tlc59116.h; sourceTree = "<group>"; };
 		C0EE306F189AF308003D998E /* tlc59116.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tlc59116.c; sourceTree = "<group>"; };
+		C0F34FCD18A36B3C001A4D65 /* ledcontroller.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ledcontroller.c; sourceTree = "<group>"; };
+		C0F34FCE18A36B3C001A4D65 /* ledcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ledcontroller.h; sourceTree = "<group>"; };
 		C0FBC508186F764000DB9B65 /* spi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = spi.c; sourceTree = "<group>"; };
 		C0FBC509186F76C400DB9B65 /* spi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spi.h; sourceTree = "<group>"; };
 		C0FBC50D1870633100DB9B65 /* network.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = network.c; sourceTree = "<group>"; };
@@ -98,6 +100,8 @@
 		C0EE306E189AF2BE003D998E /* ext */ = {
 			isa = PBXGroup;
 			children = (
+				C0F34FCE18A36B3C001A4D65 /* ledcontroller.h */,
+				C0F34FCD18A36B3C001A4D65 /* ledcontroller.c */,
 				C0EE306F189AF308003D998E /* tlc59116.c */,
 				C0EE306C189AF2B1003D998E /* tlc59116.h */,
 			);
@@ -136,7 +140,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = /Users/Ferdi/Documents/GitHub/EthShield/src;
+			buildWorkingDirectory = src;
 			dependencies = (
 			);
 			name = "Dollhouse Ethernet Shield";

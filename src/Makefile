@@ -12,9 +12,9 @@ DEVICE     = atmega644p
 CLOCK      = 20000000 # 20 Mhz
 
 OUTPUT_DIR   = Debug/
-OUTPUT_HEX   = DollhouseEthShield.hex
-OUTPUT_ELF   = DollhouseEthShield.elf
-OUTPUT_LSS   = DollhouseEthShield.lss
+OUTPUT_HEX   = EthShield.hex
+OUTPUT_ELF   = EthShield.elf
+OUTPUT_LSS   = EthShield.lss
 FUSE_LOW  = 0xE7
 FUSE_HIGH = 0xDF
 FUSE_EXT  = 0xFF
