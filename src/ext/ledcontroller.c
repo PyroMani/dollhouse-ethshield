@@ -28,3 +28,9 @@ void lc_init(void) {
         i++;
     }
 }
+void lc_handle_packet(uint8_t *data, uint16_t length) {
+    switch (data[0]) {
+        default:
+            break;
+    }
+}

@@ -17,6 +17,7 @@
 #include <inttypes.h>
 #include <avr/interrupt.h>
 #include "net/network.h"
+#include "net/udp.h"
 #include "utils/logger.h"
 #include "utils/uptime.h"
 #include "utils/werkti.h"
@@ -37,6 +38,9 @@ int main(void) {
     
     // Initialize network chip
     network_init();
+
+    // Add handler for led controller packets
+    udp_port_register(8000, lc_handle_packet);
     
     // Infinite loop
     while (1) {

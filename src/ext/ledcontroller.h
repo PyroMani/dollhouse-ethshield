@@ -18,4 +18,5 @@
 
 extern void lc_init(void);
 
+extern void lc_handle_packet(uint8_t *data, uint16_t length);
 #endif // EXT_LEDCONTROLLER_H
