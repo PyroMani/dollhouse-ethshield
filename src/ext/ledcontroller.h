@@ -13,5 +13,9 @@
 #define EXT_LEDCONTROLLER_H
 
 #include "../config.h"
+#include <inttypes.h>
+#include "tlc59116.h"
+
+extern void lc_init(void);
 
 #endif // EXT_LEDCONTROLLER_H

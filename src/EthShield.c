@@ -20,6 +20,7 @@
 #include "utils/logger.h"
 #include "utils/uptime.h"
 #include "utils/werkti.h"
+#include "ext/ledcontroller.h"
 
 int main(void) {
 	// Enable interrupts
@@ -30,6 +31,9 @@ int main(void) {
     
     // Initialize uptime
     uptime_init();
+
+    // Initialize led controller
+    lc_init();
     
     // Initialize network chip
     network_init();
