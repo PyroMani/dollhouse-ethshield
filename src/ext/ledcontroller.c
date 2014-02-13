@@ -15,3 +15,4 @@
 #error Led controller cannot work without NET_UDP
 #endif // NET_UDP
 
+const uint8_t address = 0b11000110;
