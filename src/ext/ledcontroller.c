@@ -10,3 +10,8 @@
 
 #include "ledcontroller.h"
 
+// Check if UDP is enabled
+#ifndef NET_UDP
+#error Led controller cannot work without NET_UDP
+#endif // NET_UDP
+
