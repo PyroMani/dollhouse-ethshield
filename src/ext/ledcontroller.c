@@ -17,6 +17,7 @@
 
 #define LC_ACT_REQUEST_BRIGHTNESS_VALUES 0x10
 #define LC_ACT_REPLY_BRIGHTNESS_VALUES   0x11
+#define LC_ACT_ROOM_SELECT               0x20
 const uint8_t address = 0b11000110;
 uint8_t brightness[16];
 volatile uint8_t selected_room;
@@ -32,12 +33,18 @@ void lc_init(void) {
     }
 }
 void reply_brightness_values(void);
+void select_room(uint8_t room);
 
 void lc_handle_packet(uint8_t *data, uint16_t length) {
     switch (data[0]) {
         case LC_ACT_REQUEST_BRIGHTNESS_VALUES:
             // Send brightness values
             reply_brightness_values();
+            break;
+
+        case LC_ACT_ROOM_SELECT:
+            // Select a room
+            select_room(data[1]);
             break;
 
         default:
@@ -59,4 +66,11 @@ void reply_brightness_values(void) {
     // Send packet
     // Length: 17 (action + 16x brightness)
     udp_send(17);
+}
+
+void select_room(uint8_t room) {
+    if (room >= 16) {
+        room = 0xFF;
+    }
+    selected_room = room;
 }
