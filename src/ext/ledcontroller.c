@@ -15,7 +15,10 @@
 #error Led controller cannot work without NET_UDP
 #endif // NET_UDP
 
+#define LC_ACT_REQUEST_BRIGHTNESS_VALUES 0x10
+#define LC_ACT_REPLY_BRIGHTNESS_VALUES   0x11
 const uint8_t address = 0b11000110;
+uint8_t brightness[16];
 volatile uint8_t selected_room;
 
 void lc_init(void) {
@@ -28,9 +31,32 @@ void lc_init(void) {
         i++;
     }
 }
+void reply_brightness_values(void);
+
 void lc_handle_packet(uint8_t *data, uint16_t length) {
     switch (data[0]) {
+        case LC_ACT_REQUEST_BRIGHTNESS_VALUES:
+            // Send brightness values
+            reply_brightness_values();
+            break;
+
         default:
             break;
     }
+}
+
+void reply_brightness_values(void) {
+    // Make reply from received packet
+    uint8_t *data = udp_prepare_reply();
+    // Set action byte
+    data[0] = LC_ACT_REPLY_BRIGHTNESS_VALUES;
+    // Put all brightness values in
+    uint8_t i = 0;
+    while (i < 16) {
+        data[1+i] = brightness[i];
+        i++;
+    }
+    // Send packet
+    // Length: 17 (action + 16x brightness)
+    udp_send(17);
 }
