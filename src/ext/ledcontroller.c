@@ -18,6 +18,8 @@
 #define LC_ACT_REQUEST_BRIGHTNESS_VALUES 0x10
 #define LC_ACT_REPLY_BRIGHTNESS_VALUES   0x11
 #define LC_ACT_ROOM_SELECT               0x20
+#define LC_ACT_ROOM_SET_BRIGHTNESS       0x30
+
 const uint8_t address = 0b11000110;
 uint8_t brightness[16];
 volatile uint8_t selected_room;
@@ -44,6 +46,7 @@ void lc_init(void) {
 
 void reply_brightness_values(void);
 void select_room(uint8_t room);
+void set_room_brightness(uint8_t room, uint8_t brightness);
 
 void lc_handle_packet(uint8_t *data, uint16_t length) {
     switch (data[0]) {
@@ -55,6 +58,11 @@ void lc_handle_packet(uint8_t *data, uint16_t length) {
         case LC_ACT_ROOM_SELECT:
             // Select a room
             select_room(data[1]);
+            break;
+
+        case LC_ACT_ROOM_SET_BRIGHTNESS:
+            // Set brightness for a room
+            set_room_brightness(data[1], data[2]);
             break;
 
         default:
@@ -103,4 +111,20 @@ void select_room(uint8_t room) {
         tlc59116_set_led_mode(address, selected_room, TLC59116_LED_PWM_GROUP);
         tlc59116_set_brightness(address, selected_room, 0xFF);
     }
+}
+
+void set_room_brightness(uint8_t room, uint8_t new_brightness) {
+    // Make sure selected room is a valid room
+    if (room >= 16) {
+        return;
+    }
+    // Check if room is the selected room
+    if (selected_room == room) {
+        // Deselect room
+        deselect_room();
+    }
+    // Set led brightness
+    tlc59116_set_brightness(address, room, new_brightness);
+    // Save brightness
+    brightness[room] = new_brightness;
 }
