@@ -26,22 +26,22 @@
 int main(void) {
 	// Enable interrupts
     sei();
-	
+
     // Initialize debug
     logger_init();
-    
+
     // Initialize uptime
     uptime_init();
 
     // Initialize led controller
     lc_init();
-    
+
     // Initialize network chip
     network_init();
 
     // Add handler for led controller packets
     udp_port_register(8000, lc_handle_packet);
-    
+
     // Infinite loop
     while (1) {
         // Handle network traffic
@@ -49,5 +49,5 @@ int main(void) {
         // Maybe send werkti report
         werkti_maybe_report();
     }
-    
+
 }
