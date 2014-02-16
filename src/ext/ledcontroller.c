@@ -23,15 +23,25 @@ uint8_t brightness[16];
 volatile uint8_t selected_room;
 
 void lc_init(void) {
+    // Start with room 0xFF selected
     selected_room = 0xFF;
+    // Awake crystal
     tlc59116_sleep(address, 0);
+    // Initialize all leds to pwm
     uint8_t i = 0;
     while (i < 16) {
         tlc59116_set_led_mode(address, i, TLC59116_LED_PWM);
         tlc59116_set_brightness(address, i, 0xFF);
         i++;
     }
+    // Set group mode to blinking and output change on STOP
+    tlc59116_write_register(address, 0x01, 0b00100000);
+    // Set blinking duty cycle (GRPPWM)
+    tlc59116_write_register(address, 0x12, 128);
+    // Set blinking period (GRPFREQ)
+    tlc59116_write_register(address, 0x13, 32);
 }
+
 void reply_brightness_values(void);
 void select_room(uint8_t room);
 
