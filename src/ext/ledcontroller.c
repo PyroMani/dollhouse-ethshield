@@ -31,7 +31,7 @@ void lc_init(void) {
     uint8_t i = 0;
     while (i < 16) {
         tlc59116_set_led_mode(address, i, TLC59116_LED_PWM);
-        tlc59116_set_brightness(address, i, 0xFF);
+        tlc59116_set_brightness(address, i, 0x00);
         i++;
     }
     // Set group mode to blinking and output change on STOP
