@@ -91,5 +91,6 @@ void select_room(uint8_t room) {
     selected_room = room;
     if (selected_room < 0xFF) {
         tlc59116_set_led_mode(address, selected_room, TLC59116_LED_PWM_GROUP);
+        tlc59116_set_brightness(address, selected_room, 0xFF);
     }
 }
