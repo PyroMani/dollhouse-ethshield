@@ -85,6 +85,7 @@ void select_room(uint8_t room) {
     }
     // If a room was already selected, deselect it
     if (selected_room < 0xFF) {
+        tlc59116_set_brightness(address, selected_room, brightness[selected_room]);
         tlc59116_set_led_mode(address, selected_room, TLC59116_LED_PWM);
     }
     selected_room = room;
