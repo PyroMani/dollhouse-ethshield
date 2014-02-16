@@ -78,6 +78,16 @@ void reply_brightness_values(void) {
     udp_send(17);
 }
 
+void deselect_room() {
+    // Do not deselect when there is nothing selected
+    if (selected_room >= 16) {
+        return;
+    }
+    tlc59116_set_led_mode(address, selected_room, TLC59116_LED_PWM);
+    tlc59116_set_brightness(address, selected_room, brightness[selected_room]);
+    selected_room = 0xFF;
+}
+
 void select_room(uint8_t room) {
     // Make sure selected room is a valid room
     if (room >= 16) {
