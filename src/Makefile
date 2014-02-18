@@ -12,9 +12,9 @@ DEVICE     = atmega644p
 CLOCK      = 20000000 # 20 Mhz
 
 OUTPUT_DIR   = Debug/
-OUTPUT_HEX   = EthShield.hex
-OUTPUT_ELF   = EthShield.elf
-OUTPUT_LSS   = EthShield.lss
+OUTPUT_HEX   = DollhouseEthShield.hex
+OUTPUT_ELF   = DollhouseEthShield.elf
+OUTPUT_LSS   = DollhouseEthShield.lss
 FUSE_LOW  = 0xE7
 FUSE_HIGH = 0xDF
 FUSE_EXT  = 0xFF
@@ -34,6 +34,7 @@ utils/logger.o \
 utils/port_service.o \
 utils/uptime.o \
 utils/werkti.o \
+ext/ledcontroller.o \
 ext/tlc59116.o \
 config.o \
 EthShield.o 
