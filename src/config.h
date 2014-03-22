@@ -117,7 +117,7 @@
 /**
  * @brief
  */
-#define NET_DHCP_HOSTNAME "SDev-devel"
+#define NET_DHCP_HOSTNAME "Dollhouse"
 
 //
 // Internet Control Message Protocol (ICMP)

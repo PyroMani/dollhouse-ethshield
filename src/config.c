@@ -13,7 +13,7 @@
 // MAC address of the device. Needs to be unique in the network.
 // Only change last two digits and make sure every device in a network has
 // a unique mac address!
-uint8_t my_mac[6] = { 0x2E, 0x44, 0x65, 0x76,   0x01, 0x01 };
+uint8_t my_mac[6] = { 0x2E, 0x44, 0x65, 0x76,   0x19, 0x87 };
 
 // IPv4 address of the device. Needs to be set when not using DHCP.
 // When using DHCP it is set automatically.
