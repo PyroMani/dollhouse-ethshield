@@ -37,7 +37,7 @@ utils/werkti.o \
 ext/ledcontroller.o \
 ext/tlc59116.o \
 config.o \
-EthShield.o 
+EthShield.o
 
 # Tune the lines below only if you know what you are doing:
 
