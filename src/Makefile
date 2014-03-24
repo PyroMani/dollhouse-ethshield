@@ -82,11 +82,13 @@ start: all
 clean:
 	rm -f $(OUTPUT_DIR)$(OUTPUT_HEX) $(OUTPUT_DIR)$(OUTPUT_ELF) $(OBJECTS)
 
+# Program fuses slow (for new chips)
 fuse:
-	avrdude -c avrisp2 -P usb -p $(DEVICE) -U lfuse:w:$(FUSE_LOW):m -U hfuse:w:$(FUSE_HIGH):m -U efuse:w:$(FUSE_EXT):m
+	avrdude -c avrisp2 -P usb -B 5 -p $(DEVICE) -U lfuse:w:$(FUSE_LOW):m -U hfuse:w:$(FUSE_HIGH):m -U efuse:w:$(FUSE_EXT):m
 
+# Program hex fast (fuses already set)
 dude: $(OUTPUT_HEX)
-	avrdude -c avrisp2 -P usb -p $(DEVICE) -U flash:w:$(OUTPUT_DIR)$(OUTPUT_HEX):i
+	avrdude -c avrisp2 -P usb -B 1 -p $(DEVICE) -U flash:w:$(OUTPUT_DIR)$(OUTPUT_HEX):i
 
 restart:
 	avrdude -c avrisp2 -P usb -p $(DEVICE)
